@@ -3,4 +3,4 @@ project(SonarCloudProject)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(SonarCloudProject main.cpp)
+add_executable(SonarCloudProject src/main.cpp)
