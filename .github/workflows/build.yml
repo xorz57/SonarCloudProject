@@ -5,8 +5,6 @@ on:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
-env:
-  BUILD_TYPE: Release
 jobs:
   build:
     name: Build and analyze
@@ -22,7 +20,7 @@ jobs:
       - name: Run build-wrapper
         run: |
           cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+          build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build ${{github.workspace}}/build --config Release
       - name: Run sonar-scanner
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
